@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+body {
+    color: white;
+    background: black;
+}
+
+@theme {
+    --breakpoint-xs: 30rem;
+
+    --color-canary: #ffc800;
+    --color-blue: #46c8dc;
+    --color-pink: #ff8787;
+    --color-coral: #fb923c;
+
+    --font-default: 'Poppins', serif;
+    --font-hand: 'Gochi Hand', serif;
+    --font-code: 'source code pro', sans-serif;
+
+    --inset-shadow-btn_default:
+        inset -4px -4px 6px 1px rgb(0 0 0 / 0.2),
+        inset 4px 4px 6px 2px rgb(255 255 255 / 0.5);
+    --inset-shadow-btn_active:
+        inset 2px 2px 8px 2px rgb(0 0 0 / 0.4),
+        inset -2px -2px 6px 2px rgb(255 255 255 / 0.5);
+    --inset-shadow-t-dark: inset 4px 4px 6px 1px rgb(0 0 0 / 0.4);
+    --inset-shadow-b-dark: inset -4px -4px 6px 1px rgb(0 0 0 / 0.2);
+    --inset-shadow-t-light: inset 4px 4px 6px 1px rgb(255 255 255 / 0.2);
+
+    --shadow-canary: 0 0 10px 2px rgb(255 200 0 / 0.8);
+    --shadow-pink: 0 0 10px 2px rgb(255 135 135 / 0.8);
+    --shadow-blue: 0 0 10px 2px rgb(70 200 220 / 0.8);
+
+    --text-shadow-hover: 2px 2px 6px rgb(255 255 255 / 0.8);
+}
+
+@layer utilities {
+    .center {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform;
+    }
+
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+
+    .flex-between {
+        @apply flex items-center justify-between;
+    }
+}
+
+.vertical-rl {
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+}
