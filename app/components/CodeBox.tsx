@@ -7,9 +7,9 @@ import 'highlight.js/styles/night-owl.css'
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('html', xml)
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import Button from '../ui/Button'
 import cx from 'clsx'
-import Button from './Button'
 
 type Language = 'html' | 'javascript'
 
@@ -20,16 +20,13 @@ interface CodeBoxProps {
 }
 
 export default function CodeBox({ code, language, className }: CodeBoxProps) {
-    const codeRef = useRef<HTMLPreElement>(null)
+    const [highlightedCode, setHighlightedCode] = useState('')
     const [copied, setCopied] = useState(false)
 
     useEffect(() => {
-        const ref = codeRef.current
-        if (ref) {
-            ref.removeAttribute('data-highlighted')
-            hljs.highlightElement(ref)
-        }
-    }, [codeRef.current])
+        const result = hljs.highlight(code, { language }).value
+        setHighlightedCode(result)
+    }, [code, language])
 
     const copyToClipboard = async () => {
         try {
@@ -54,10 +51,13 @@ export default function CodeBox({ code, language, className }: CodeBoxProps) {
                     {copied ? 'Copied!' : 'Copy'}
                 </Button>
             )}
-            <pre>
-                <code ref={codeRef} className={cx(language, className)}>
-                    {code}
-                </code>
+            <pre
+                className={cx(
+                    'round-lg overflow-x-auto bg-neutral-800 p-6',
+                    className,
+                )}
+            >
+                <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
             </pre>
         </>
     )

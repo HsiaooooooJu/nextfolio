@@ -1,4 +1,5 @@
 # 🌟 Nextfolio
+
 This is a Next.js project bootstrapped with create-next-app.
 
 next_portfolio/
@@ -6,7 +7,7 @@ next_portfolio/
 ├── app/
 │ ├── layout.tsx
 │ ├── page.tsx
-│ │ 
+│ │
 │ ├── (home)/
 │ │ ├── layout.tsx
 │ │ │
@@ -18,9 +19,9 @@ next_portfolio/
 │ │ │
 │ │ ├── project/
 │ │ └──── page.tsx
-│ │ 
+│ │
 │ └── ui/
-│ │ 
+│ │
 │ └── globals.css
 │
 └── public/
