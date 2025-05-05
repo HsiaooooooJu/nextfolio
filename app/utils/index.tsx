@@ -27,7 +27,7 @@ export function getDigit(num: number): number {
  */
 export function generateAnswer() {
     const number = Array.from({ length: 10 }, (_, i) => i)
-    let answer = []
+    const answer = []
 
     while (answer.length < 4) {
         const index = getDigit(number.length)
