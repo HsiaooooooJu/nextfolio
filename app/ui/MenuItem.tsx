@@ -37,7 +37,7 @@ export default function MenuItem({
         <Link
             href={href}
             className={cx(
-                'flex-center group relative overflow-hidden rounded-full text-center',
+                'flex-center group relative rounded-full text-center',
                 bgColor,
                 insetShadow,
                 isActive
