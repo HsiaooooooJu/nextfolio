@@ -24,8 +24,10 @@ export default function CodeBox({ code, language, className }: CodeBoxProps) {
     const [copied, setCopied] = useState(false)
 
     useEffect(() => {
-        if (codeRef.current) {
-            hljs.highlightBlock(codeRef.current)
+        const ref = codeRef.current
+        if (ref) {
+            ref.removeAttribute('data-highlighted')
+            hljs.highlightElement(ref)
         }
     }, [codeRef.current])
 
@@ -46,7 +48,8 @@ export default function CodeBox({ code, language, className }: CodeBoxProps) {
             {language === 'javascript' && (
                 <Button
                     onClick={copyToClipboard}
-                    className='font-hand text-md absolute top-2 right-2 rounded-md bg-gray-800 px-3 py-1 text-white transition'
+                    noShadow
+                    className='font-hand text-md absolute top-2 right-2 rounded-md bg-gray-700 px-3 py-1 text-white transition'
                 >
                     {copied ? 'Copied!' : 'Copy'}
                 </Button>
