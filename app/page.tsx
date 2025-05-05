@@ -1,5 +1,5 @@
-import LandingDeco from './ui/LandingDeco'
-import RoadSign from './ui/RoadSign'
+import LandingDeco from './components/LandingDeco'
+import RoadSign from './components/RoadSign'
 import Menu from './ui/Menu'
 
 export default function Home() {
