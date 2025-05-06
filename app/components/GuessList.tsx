@@ -1,7 +1,7 @@
 import cx from 'clsx'
 
 export type guessType = {
-    guess: number
+    guess: string
     hint: string
 }
 
@@ -15,7 +15,7 @@ export default function GuessList({ list, className }: GuessListProps) {
         <div
             className={cx(
                 className ??
-                    'font-code mx-auto mt-2 grid gap-x-6 p-2 text-xl md:grid-cols-2',
+                    'font-code mx-auto grid gap-x-6 p-2 text-xl md:grid-cols-2',
             )}
         >
             {list.map((item, index) => (

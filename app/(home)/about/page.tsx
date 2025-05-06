@@ -1,31 +1,44 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { getStartDay, generateAnswer, getHint } from '../../utils/'
-import CodeBox from '../../components/CodeBox'
 import cx from 'clsx'
+
+import {
+    getStartDay,
+    generateAnswer,
+    getHint,
+    inputValidation,
+    handleKeyDown,
+} from '../../utils'
+
+import CodeBox from '../../components/CodeBox'
+import GuessList from '../../components/GuessList'
+import type { guessType } from '../../components/GuessList'
+
 import Button from '../../ui/Button'
 import Input from '../../ui/Input'
-import GuessList from '../../components/GuessList'
 
-type guessType = {
-    guess: number
-    hint: string
-}
-
+const CHANCES = 2
+const WIN_CONDITION = '4A0B'
 const widthClasses = 'mx-auto w-11/12 max-w-lg md:w-full'
+
+const updateDays = (): number => {
+    const start = getStartDay(new Date('2022/02/04'))
+    const now = getStartDay(new Date())
+    const msPerDay = 1000 * 60 * 60 * 24
+    return Math.floor((now - start) / msPerDay)
+}
 
 export default function About() {
     const [isStart, setIsStart] = useState<boolean>(false)
     const [guessList, setGuessList] = useState<guessType[]>([])
-    const [answer, setAnswer] = useState<number[]>([])
+    const [answer, setAnswer] = useState<string[]>([])
     const [isCorrect, setIsCorrect] = useState<boolean>(false)
+    const [errMsg, setErrMsg] = useState<string>('')
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const start = getStartDay(new Date('2022/02/04'))
-    const now = getStartDay(new Date())
-    const msPerDay = 1000 * 60 * 60 * 24
-    const days = Math.floor((now - start) / msPerDay)
+    const days = updateDays()
+    const gameOver = guessList.length >= CHANCES
 
     const gameStart = () => {
         const generated = generateAnswer()
@@ -33,6 +46,9 @@ export default function About() {
         setIsStart(true)
         setGuessList([])
         setIsCorrect(false)
+        setErrMsg('')
+
+        if (inputRef.current) inputRef.current.value = ''
 
         console.log(
             "%c sssh, it's secret: %c" + generated.join(''),
@@ -42,22 +58,23 @@ export default function About() {
     }
 
     const handleSubmit = () => {
-        const input = inputRef.current
-        if (!input) return
+        setErrMsg('')
+        if (gameOver || !inputRef.current) return
+        const guess = inputRef.current.value
+        const check = inputValidation(guess)
 
-        const value = input.value.split('')
-        if (!value) return
+        if (check.code !== 200) {
+            setErrMsg(check.message)
+            inputRef.current.value = ''
+            return
+        }
 
-        const hint = getHint(value, answer)
-        const guess = Number(value.join(''))
+        const hint = getHint(guess.split(''), answer)
 
         setGuessList((prev) => [...prev, { guess, hint }])
+        inputRef.current.value = ''
 
-        input.value = ''
-
-        if (hint === '4A0B') {
-            setIsCorrect(true)
-        }
+        if (hint === WIN_CONDITION) setIsCorrect(true)
     }
 
     return (
@@ -117,8 +134,8 @@ export default function About() {
                                 isStart ? 'bg-canary' : 'bg-blue',
                             )}
                         >
-                            You only have 12 chances to guess the secret number. Use
-                            your guesses wisely!
+                            You only have {CHANCES} chances to guess the secret
+                            number. Use your guesses wisely!
                         </p>
                     </div>
                     {isStart ? (
@@ -127,17 +144,44 @@ export default function About() {
                                 <Input
                                     ref={inputRef}
                                     className='w-full rounded-full bg-white px-4 py-3 text-center tracking-widest placeholder:text-stone-300 focus:placeholder-transparent'
-                                    placeholder='ex: 1234'
+                                    disabled={isCorrect || gameOver}
+                                    inputMode='numeric'
                                     maxLength={4}
-                                    type='number'
+                                    onKeyDown={(e) =>
+                                        handleKeyDown(e, 'Enter', handleSubmit)
+                                    }
+                                    pattern='\d*'
+                                    placeholder={
+                                        isCorrect ? '*☆(⊙v⊙)☆*' : 'ex: 1234'
+                                    }
+                                    type='text'
                                 />
-                                <Button
-                                    onClick={handleSubmit}
-                                    className='bg-coral hover:text-shadow-hover w-1/3 rounded-full px-6 py-3 hover:shadow-white md:w-1/2'
-                                >
-                                    Try!
-                                </Button>
+                                {!isCorrect && (
+                                    <Button
+                                        onClick={handleSubmit}
+                                        isActive={isCorrect || gameOver}
+                                        className={cx(
+                                            'w-1/3 rounded-full px-6 py-3 md:w-1/2',
+                                            isCorrect || gameOver
+                                                ? ''
+                                                : 'bg-coral hover:text-shadow-hover hover:shadow-white',
+                                        )}
+                                    >
+                                        Try!
+                                    </Button>
+                                )}
                             </div>
+                            <p
+                                className={cx(
+                                    'font-code mt-2 min-h-2 text-sm font-bold transition-opacity duration-300 ease-in-out',
+                                    errMsg.length > 0
+                                        ? 'text-red-500 opacity-100'
+                                        : 'opacity-0',
+                                )}
+                            >
+                                * {errMsg} *
+                            </p>
+
                             <GuessList list={guessList} />
                             {isCorrect && (
                                 <Button
@@ -145,6 +189,16 @@ export default function About() {
                                     className='bg-blue hover:text-shadow-hover inset-shadow-btn_default mx-auto my-2 rounded-full px-6 py-2 text-xl hover:shadow-white'
                                 >
                                     Congrats&ensp;🎉🎉🎉
+                                </Button>
+                            )}
+                            {gameOver && (
+                                <Button
+                                    onClick={gameStart}
+                                    className='bg-blue hover:text-shadow-hover inset-shadow-btn_default mx-auto my-2 rounded-full px-6 py-2 text-xl hover:shadow-white'
+                                >
+                                    Oops! It&apos;s&ensp;
+                                    <code className='text-white'>{answer}</code> 😏
+                                    Start over?
                                 </Button>
                             )}
                         </>
