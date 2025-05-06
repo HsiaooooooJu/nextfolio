@@ -4,7 +4,7 @@ export default function HomeLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <div className='max-w-4xl mx-auto'>
+        <div className='mx-auto max-w-4xl'>
             <Menu />
             {children}
         </div>

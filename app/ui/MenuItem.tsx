@@ -41,7 +41,7 @@ export default function MenuItem({
                 bgColor,
                 insetShadow,
                 isActive
-                    ? 'xs:w-42 h-12 w-30'
+                    ? 'xs:w-42 h-12 w-30 cursor-grabbing'
                     : 'size-12 transition-all duration-500 ease-in-out hover:h-12 hover:w-36',
                 !isActive && hoverEffectColor,
             )}

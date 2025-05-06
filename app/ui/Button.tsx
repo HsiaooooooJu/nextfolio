@@ -17,7 +17,10 @@ export default function Button({
     const shadow = noShadow ? '' : active
 
     return (
-        <button className={cx(className, shadow, 'cursor-pointer')} {...props}>
+        <button
+            className={cx(className, shadow, !active && 'cursor-pointer')}
+            {...props}
+        >
             {children}
         </button>
     )

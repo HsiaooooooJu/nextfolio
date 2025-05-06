@@ -1,4 +1,7 @@
 export default function Project() {
-    return <div className='font-code text-xl text-shadow-hover'>Project page is still Building 🚧</div>
-
+    return (
+        <div className='font-code text-shadow-hover text-lg'>
+            Project page is still Building 🚧
+        </div>
+    )
 }
