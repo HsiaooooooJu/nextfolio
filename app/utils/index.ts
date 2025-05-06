@@ -1,0 +1,5 @@
+export { default as getStartDay } from './getStartDay'
+export { default as generateAnswer } from './generateAnswer'
+export { default as getHint } from './getHint'
+export { default as inputValidation } from './inputValidation'
+export { default as handleKeyDown } from './handleKeyDown'
