@@ -38,7 +38,7 @@ export default function About() {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const days = updateDays()
-    const gameOver = guessList.length >= CHANCES
+    const gameOver = guessList.length >= CHANCES && !isCorrect
 
     const gameStart = () => {
         const generated = generateAnswer()
@@ -103,7 +103,7 @@ export default function About() {
 <p id="code"> Days: ${days} </p>`}
                 />
             </div>
-            <p className='mt-6 hidden text-center text-4xl md:block'>∞</p>
+            <p className='hidden text-center text-4xl md:block'>∞</p>
             <div className={cx('flex flex-col', widthClasses)}>
                 <div
                     className={cx(
@@ -183,22 +183,22 @@ export default function About() {
                             </p>
 
                             <GuessList list={guessList} />
-                            {isCorrect && (
+                            {(isCorrect || gameOver) && (
                                 <Button
                                     onClick={gameStart}
                                     className='bg-blue hover:text-shadow-hover inset-shadow-btn_default mx-auto my-2 rounded-full px-6 py-2 text-xl hover:shadow-white'
                                 >
-                                    Congrats&ensp;🎉🎉🎉
-                                </Button>
-                            )}
-                            {gameOver && (
-                                <Button
-                                    onClick={gameStart}
-                                    className='bg-blue hover:text-shadow-hover inset-shadow-btn_default mx-auto my-2 rounded-full px-6 py-2 text-xl hover:shadow-white'
-                                >
-                                    Oops! It&apos;s&ensp;
-                                    <code className='text-white'>{answer}</code> 😏
-                                    Start over?
+                                    {isCorrect ? (
+                                        <>Congrats & ensp;🎉🎉🎉 Play again 😎</>
+                                    ) : (
+                                        <>
+                                            Oops! It&apos;s&ensp;
+                                            <code className='text-white'>
+                                                {answer}
+                                            </code>{' '}
+                                            😏 Start over?
+                                        </>
+                                    )}
                                 </Button>
                             )}
                         </>

@@ -8,7 +8,7 @@ export default function Home() {
             <div className='block md:hidden'>
                 <Menu />
             </div>
-            <div className='mx-auto flex max-w-4xl md:justify-between'>
+            <div className='mx-auto flex max-w-4xl md:mt-32 md:justify-between'>
                 <div className='hidden md:block'>
                     <RoadSign />
                 </div>
