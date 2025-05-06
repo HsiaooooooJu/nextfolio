@@ -18,7 +18,7 @@ import type { guessType } from '../../components/GuessList'
 import Button from '../../ui/Button'
 import Input from '../../ui/Input'
 
-const CHANCES = 2
+const CHANCES = 12
 const WIN_CONDITION = '4A0B'
 const widthClasses = 'mx-auto w-11/12 max-w-lg md:w-full'
 

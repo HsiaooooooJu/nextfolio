@@ -1,0 +1,16 @@
+# Ignore lockfile
+pnpm-lock.yaml
+
+# Ignore configs
+eslint.config.mjs
+next.config.ts
+postcss.config.mjs
+tsconfig.json
+package.json
+.prettierrc
+
+# Ignore IDE configs
+.vscode/
+
+# Ignore docs
+README.md
