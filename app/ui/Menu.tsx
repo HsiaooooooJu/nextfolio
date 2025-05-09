@@ -2,7 +2,7 @@ import MenuItem from './MenuItem'
 
 export default function Menu() {
     return (
-        <div className='flex justify-center gap-6 pb-10 lg:justify-start lg:pb-14'>
+        <nav className='flex justify-center gap-6 pb-10 lg:justify-start lg:pb-14'>
             <MenuItem
                 href='/about'
                 text='About'
@@ -31,6 +31,6 @@ export default function Menu() {
                 iconHeight={25}
                 iconClassName='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/5 transform'
             />
-        </div>
+        </nav>
     )
 }
