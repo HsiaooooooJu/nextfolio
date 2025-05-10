@@ -1,7 +1,7 @@
 import './globals.css'
 import cx from 'clsx'
 import { gochiHand, poppins } from './ui/fonts'
-import Navbar from './ui/Navbar'
+import { Navbar } from './ui'
 import ModeProvider from './context/mode_context'
 
 export default function RootLayout({

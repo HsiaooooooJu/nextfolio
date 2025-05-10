@@ -10,13 +10,8 @@ import {
     inputValidation,
     handleKeyDown,
 } from '../../utils'
-
-import CodeBox from '../../components/CodeBox'
-import GuessList from '../../components/GuessList'
-import type { guessType } from '../../components/GuessList'
-
-import Button from '../../ui/Button'
-import Input from '../../ui/Input'
+import { CodeBox, GuessList, GuessType } from '../../components'
+import { Button, Input } from '../../ui'
 
 const CHANCES = 12
 const WIN_CONDITION = '4A0B'
@@ -31,7 +26,7 @@ const updateDays = (): number => {
 
 export default function About() {
     const [isStart, setIsStart] = useState<boolean>(false)
-    const [guessList, setGuessList] = useState<guessType[]>([])
+    const [guessList, setGuessList] = useState<GuessType[]>([])
     const [answer, setAnswer] = useState<string[]>([])
     const [isCorrect, setIsCorrect] = useState<boolean>(false)
     const [errMsg, setErrMsg] = useState<string>('')
@@ -164,7 +159,7 @@ export default function About() {
                                             'w-1/3 rounded-full px-6 py-3 md:w-1/2',
                                             isCorrect || gameOver
                                                 ? ''
-                                                : 'bg-coral hover:text-shadow-hover hover:shadow-white',
+                                                : 'bg-coral hover:shadow-white hover:text-shadow-white',
                                         )}
                                     >
                                         Try!
@@ -181,15 +176,14 @@ export default function About() {
                             >
                                 * {errMsg} *
                             </p>
-
                             <GuessList list={guessList} />
                             {(isCorrect || gameOver) && (
                                 <Button
                                     onClick={gameStart}
-                                    className='bg-blue hover:text-shadow-hover inset-shadow-btn_default mx-auto my-2 rounded-full px-6 py-2 text-xl hover:shadow-white'
+                                    className='bg-blue inset-shadow-btn_default mx-auto my-2 rounded-full px-6 py-2 text-xl hover:shadow-white hover:text-shadow-white'
                                 >
                                     {isCorrect ? (
-                                        <>Congrats & ensp;🎉🎉🎉 Play again 😎</>
+                                        <>Congrats &ensp;🎉🎉🎉 Play again 😎</>
                                     ) : (
                                         <>
                                             Oops! It&apos;s&ensp;
@@ -205,7 +199,7 @@ export default function About() {
                     ) : (
                         <Button
                             onClick={gameStart}
-                            className='bg-canary hover:text-shadow-hover mx-auto my-4 rounded-full px-6 py-3 text-xl hover:shadow-white lg:my-auto'
+                            className='bg-canary mx-auto my-4 rounded-full px-6 py-3 text-xl hover:shadow-white hover:text-shadow-white lg:my-auto'
                         >
                             Game Start
                         </Button>
