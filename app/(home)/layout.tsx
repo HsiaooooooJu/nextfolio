@@ -1,4 +1,4 @@
-import Menu from '../ui/Menu'
+import Menu from '../components/Menu'
 
 export default function HomeLayout({
     children,

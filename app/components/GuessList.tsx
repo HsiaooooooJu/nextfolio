@@ -1,12 +1,12 @@
 import cx from 'clsx'
 
-export type guessType = {
+export type GuessType = {
     guess: string
     hint: string
 }
 
 interface GuessListProps {
-    list: guessType[]
+    list: GuessType[]
     className?: string
 }
 
@@ -15,14 +15,16 @@ export default function GuessList({ list, className }: GuessListProps) {
         <div
             className={cx(
                 className ??
-                    'font-code mx-auto grid gap-x-6 p-2 text-xl md:grid-cols-2',
+                'font-code mx-auto grid gap-x-6 p-2 text-xl md:grid-cols-2',
             )}
         >
             {list.map((item, index) => (
-                <div className='flex gap-1 tracking-wider' key={index}>
-                    <span className='text-stone-500'>{index + 1}: </span>
-                    <span className='font-bold'>{item.guess}&ensp;</span>
-                    <span className='font-medium text-black'>{item.hint}</span>
+                <div className='flex justify-end gap-1 tracking-wider' key={index}>
+                    <span className='text-stone-500 text-right'>{index + 1}: </span>
+                    <p>
+                        <span className='font-bold'>{item.guess}&ensp;</span>
+                        <span className='font-medium text-black'>{item.hint}</span>
+                    </p>
                 </div>
             ))}
         </div>

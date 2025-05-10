@@ -1,7 +1,5 @@
 import { Metadata } from 'next'
-import LandingDeco from './components/LandingDeco'
-import RoadSign from './components/RoadSign'
-import Menu from './ui/Menu'
+import { LandingDeco, Menu, RoadSign} from './components'
 
 export const metadata: Metadata = {
     title: {

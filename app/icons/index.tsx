@@ -1,3 +1,98 @@
+type IconType = React.SVGProps<SVGPathElement> & {
+    color?: string
+    size?: string
+    stroke?: string
+    isFilled?: boolean
+}
+
+const getColor = (color: string): string => {
+    switch (color) {
+        case 'canary':
+            return '#ffc800'
+        case 'pink':
+            return '#ff8787'
+        case 'blue':
+            return '#46c8dc'
+        case 'coral':
+            return '#fb923c'
+        default:
+            return '#ffc800'
+    }
+}
+
+export function Moon({
+    color = '',
+    size = '50px',
+    stroke = '',
+    isFilled = true,
+    ...props
+}: IconType) {
+    const fillColor = getColor(color)
+    const strokeColor = stroke ? getColor(stroke) : 'none'
+    const svgSize = { width: size, height: size }
+
+    return (
+        <div style={svgSize}>
+            <svg
+                className='h-full w-full'
+                xmlns='http://www.w3.org/2000/svg'
+                width='40'
+                height='40'
+                viewBox='0 0 40 40'
+                fill='none'
+            >
+                <path
+                    className='hover:shadow-white'
+                    stroke={strokeColor}
+                    fill={fillColor}
+                    fillOpacity={isFilled ? 1 : 0}
+                    strokeOpacity={isFilled ? 0 : 1}
+                    vectorEffect='non-scaling-stroke'
+                    transform='scale(0.9)'
+                    style={{
+                        transition:
+                            'fill-opacity 0.3s ease-in-out, stroke-opacity 0.3s ease-in-out',
+                    }}
+                    {...props}
+                    d='M0 26.8558C7.43305 29.7686 16.2098 28.2219 22.2159 22.2159C28.2219 16.2098 29.7686 7.43305 26.8558 0C29.4338 1.01022 31.8501 2.55687 33.9332 4.63992C42.0223 12.729 42.0223 25.8441 33.9332 33.9332C25.8441 42.0223 12.729 42.0223 4.63992 33.9332C2.55686 31.8501 1.01022 29.4338 0 26.8558Z'
+                />
+            </svg>
+        </div>
+    )
+}
+
+export function Egg({ size = '50px', ...props }: IconType) {
+    const svgSize = { width: size, height: size }
+    return (
+        <div style={svgSize}>
+            <svg
+                className='h-full w-full'
+                xmlns='http://www.w3.org/2000/svg'
+                width='50'
+                height='50'
+                viewBox='0 0 50 50'
+                fill='none'
+            >
+                <path
+                    {...props}
+                    d='M43.9291 34.9867C42.0957 36.3469 40.5876 38.1081 39.512 40.1397C36.0537 46.4972 30.7083 49.7392 23.5506 50C16.8866 49.7081 11.7001 46.7327 7.98918 41.0737C6.76815 39.2114 6.01793 37.1623 5.48205 35.0159C4.93087 32.8461 3.95864 30.8106 2.62278 29.0281C-2.50247 22.0595 0.182639 11.9267 8.07722 8.58154C10.8255 7.44119 13.323 5.75402 15.4225 3.61926C19.5162 -0.556832 26.7448 -1.21652 31.5887 2.15004C33.0241 3.14639 34.1934 4.53972 35.6212 5.54969C37.3264 6.79123 39.1273 7.88487 41.0105 8.82284C49.6611 12.9756 53.3414 24.6866 46.2812 32.848C45.5769 33.6459 44.7884 34.364 43.9291 34.9867Z'
+                    fill='white'
+                />
+                <path
+                    {...props}
+                    d='M24.5343 33.9943C29.7167 33.9943 33.9178 29.7226 33.9178 24.4531C33.9178 19.1836 29.7167 14.9119 24.5343 14.9119C19.3519 14.9119 15.1508 19.1836 15.1508 24.4531C15.1508 29.7226 19.3519 33.9943 24.5343 33.9943Z'
+                    fill='#ffc800'
+                />
+                <path
+                    {...props}
+                    d='M21.4228 20.1193C22.1792 19.3502 22.3355 18.2622 21.7719 17.6892C21.2084 17.1162 20.1384 17.2751 19.382 18.0442C18.6257 18.8133 18.4693 19.9013 19.0329 20.4743C19.5964 21.0473 20.6664 20.8883 21.4228 20.1193Z'
+                    fill='white'
+                />
+            </svg>
+        </div>
+    )
+}
+
 export function GithubIcon() {
     return (
         <svg

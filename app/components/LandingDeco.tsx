@@ -6,7 +6,7 @@ export default function LandingDeco() {
     return (
         <div className='m-auto flex w-full max-w-sm flex-col gap-6 md:m-0'>
             <div className='flex-between relative'>
-                <p className='font-default z-1 text-5xl font-bold tracking-wider text-white'>
+                <p className='font-default z-1 text-5xl font-bold tracking-wider dark:text-white'>
                     IF &ensp;NOT
                 </p>
                 <div className='flex-between absolute right-0 gap-4'>
@@ -25,20 +25,20 @@ export default function LandingDeco() {
                 <div className='bg-coral font-code inset-shadow-btn_active hover:inset-shadow-btn_default flex-center h-12 w-2/3 rounded-lg text-lg text-black'>
                     <p className='font-code'>{'(!calm) {'}</p>
                 </div>
-                <p className='font-default text-5xl tracking-wider text-white'>
+                <p className='font-default text-5xl tracking-wider dark:text-white'>
                     CALM
                 </p>
             </div>
 
-            <div className='font-default border-pink shadow-pink rounded-full border p-4 text-center text-4xl font-bold tracking-widest text-white'>
-                KEEP CALM
+            <div className='font-default border-pink shadow-pink rounded-full border p-4 text-center text-4xl font-bold tracking-widest dark:text-white'>
+                <p className='text-shadow-pink'>KEEP CALM</p>
             </div>
 
             <div className='relative flex items-center font-bold'>
                 <p className='bg-canary hover:shadow-canary font-code inset-shadow-btn_default flex-center h-10 w-10 rounded-full text-lg text-black sm:w-1/3'>
                     {'}'}
                 </p>
-                <p className='font-default text-5xl tracking-wider text-white'>
+                <p className='font-default text-5xl tracking-wider dark:text-white'>
                     {' '}
                     &ensp; ; ELSE
                 </p>
@@ -47,7 +47,7 @@ export default function LandingDeco() {
                 </p>
             </div>
             <div className='flex-between'>
-                <p className='font-hand text-5xl text-white sm:tracking-widest'>
+                <p className='font-hand text-5xl sm:tracking-widest dark:text-white'>
                     CODE ON;
                 </p>
             </div>

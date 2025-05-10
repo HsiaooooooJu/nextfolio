@@ -65,7 +65,7 @@ export default function MenuItem({
                     'transition-opacity duration-200 ease-in-out',
                     isActive
                         ? 'opacity-100'
-                        : 'text-shadow-hover opacity-0 group-hover:opacity-100 group-hover:delay-200',
+                        : 'opacity-0 text-shadow-white group-hover:opacity-100 group-hover:delay-200',
                 )}
             >
                 {text}

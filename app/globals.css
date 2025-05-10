@@ -1,8 +1,14 @@
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
-body {
+html.dark {
     color: white;
     background: black;
+}
+
+html:not(.dark) {
+    color: black;
+    background-color: rgb(235, 235, 235);
 }
 
 @theme {
@@ -32,7 +38,8 @@ body {
     --shadow-blue: 0 0 10px 2px rgb(70 200 220 / 0.8);
     --shadow-white: 0 0 15px 4px rgb(255 255 255 / 0.5);
 
-    --text-shadow-hover: 2px 2px 6px rgb(255 255 255 / 0.8);
+    --text-shadow-white: 2px 2px 6px rgb(255 255 255 / 0.8);
+    --text-shadow-pink: 2px 2px 6px rgb(255 135 135 / 0.8);
 }
 
 @layer utilities {
