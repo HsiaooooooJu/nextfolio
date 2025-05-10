@@ -3,7 +3,7 @@
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import xml from 'highlight.js/lib/languages/xml'
-import 'highlight.js/styles/night-owl.css'
+import 'highlight.js/styles/paraiso-light.css'
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('html', xml)
 
@@ -53,7 +53,7 @@ export default function CodeBox({ code, language, className }: CodeBoxProps) {
             )}
             <pre
                 className={cx(
-                    'round-lg overflow-x-auto bg-neutral-800 p-6',
+                    'round-lg overflow-x-auto p-6 bg-neutral-100 dark:bg-neutral-800 dark:text-white',
                     className,
                 )}
             >

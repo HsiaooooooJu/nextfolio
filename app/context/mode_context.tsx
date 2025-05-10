@@ -1,38 +1,43 @@
 'use client'
 
-import { createContext, useEffect, useState, useContext } from 'react'
+import { createContext, useCallback, useEffect, useState, useContext } from 'react'
 
-type mode = 'light' | 'dark' | 'system'
+type Mode = 'light' | 'dark' | 'system' | ''
 
 interface ModeContextType {
     mode: string
-    updateMode: (newMode: mode) => void
+    updateMode: (newMode: Mode) => void
 }
 
 const ModeContext = createContext<ModeContextType | undefined>(undefined)
 
 export default function ModeProvider({ children }: { children: React.ReactNode }) {
-    const [mode, setMode] = useState<mode>('dark')
+    const [mode, setMode] = useState<Mode>('')
 
     useEffect(() => {
-        const htmlElement = document.documentElement
+        function handleModeChange() {
+            const isMediaDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const isDarkMode =
+                localStorage.mode === "dark" || (!("mode" in localStorage) && isMediaDarkMode);
 
-        if (mode === 'system') {
-            const preferDark = window.matchMedia(
-                '(prefers-color-scheme: dark)',
-            ).matches
-            htmlElement.classList.remove('light', 'dark')
-            htmlElement.classList.add(preferDark ? 'dark' : 'light')
-        } else {
-            htmlElement.classList.remove('light', 'dark')
-            htmlElement.classList.add(mode)
+            if (isDarkMode) {
+                setMode("dark");
+                document.documentElement.classList.add("dark");
+            } else {
+                setMode("light");
+                document.documentElement.classList.remove("dark");
+            }
         }
-    }, [mode])
+        handleModeChange();
+    }, [mode]);
 
-    function updateMode(newMode: mode) {
-        localStorage.mode = newMode
-        setMode(newMode)
-    }
+    const updateMode = useCallback(
+        function (newMode: Mode) {
+            localStorage.mode = newMode;
+            setMode(newMode);
+        },
+        [setMode]
+    );
 
     return (
         <ModeContext.Provider value={{ mode, updateMode }}>

@@ -10,7 +10,7 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang='zh-tw' className='dark'>
+        <html lang='zh-tw'>
             <body
                 className={cx(gochiHand.variable, poppins.variable, 'antialiased')}
             >
