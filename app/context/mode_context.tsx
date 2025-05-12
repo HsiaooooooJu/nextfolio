@@ -16,28 +16,31 @@ export default function ModeProvider({ children }: { children: React.ReactNode }
 
     useEffect(() => {
         function handleModeChange() {
-            const isMediaDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const isMediaDarkMode = window.matchMedia(
+                '(prefers-color-scheme: dark)',
+            ).matches
             const isDarkMode =
-                localStorage.mode === "dark" || (!("mode" in localStorage) && isMediaDarkMode);
+                localStorage.mode === 'dark' ||
+                (!('mode' in localStorage) && isMediaDarkMode)
 
             if (isDarkMode) {
-                setMode("dark");
-                document.documentElement.classList.add("dark");
+                setMode('dark')
+                document.documentElement.classList.add('dark')
             } else {
-                setMode("light");
-                document.documentElement.classList.remove("dark");
+                setMode('light')
+                document.documentElement.classList.remove('dark')
             }
         }
-        handleModeChange();
-    }, [mode]);
+        handleModeChange()
+    }, [mode])
 
     const updateMode = useCallback(
         function (newMode: Mode) {
-            localStorage.mode = newMode;
-            setMode(newMode);
+            localStorage.mode = newMode
+            setMode(newMode)
         },
-        [setMode]
-    );
+        [setMode],
+    )
 
     return (
         <ModeContext.Provider value={{ mode, updateMode }}>

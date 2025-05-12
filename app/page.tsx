@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { LandingDeco, Menu, RoadSign} from './components'
+import { LandingDeco, Menu, RoadSign } from './components'
 
 export const metadata: Metadata = {
     title: {
