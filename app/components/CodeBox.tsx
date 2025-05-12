@@ -53,7 +53,7 @@ export default function CodeBox({ code, language, className }: CodeBoxProps) {
             )}
             <pre
                 className={cx(
-                    'round-lg overflow-x-auto p-6 bg-neutral-100 dark:bg-neutral-800 dark:text-white',
+                    'round-lg overflow-x-auto bg-neutral-100 p-6 dark:bg-neutral-800 dark:text-white',
                     className,
                 )}
             >

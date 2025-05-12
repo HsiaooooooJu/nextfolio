@@ -1,14 +1,4 @@
-import { Metadata } from 'next'
-import { LandingDeco, Menu, RoadSign} from './components'
-
-export const metadata: Metadata = {
-    title: {
-        template: '%s | Nextfolio',
-        default: 'Nextfolio',
-    },
-    description: 'Keep calm and code on.',
-    metadataBase: new URL('https://nextfolio-xi-ten.vercel.app/'),
-}
+import { LandingDeco, Menu, RoadSign } from './components'
 
 export default function Home() {
     return (
