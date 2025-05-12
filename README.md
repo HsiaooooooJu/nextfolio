@@ -2,14 +2,12 @@
 
 This is a Next.js project bootstrapped with create-next-app.
 
+<pre>
 nextfolio/
 │
 ├── app/
-│ ├── layout.tsx
-│ ├── page.tsx
 │ │
 │ ├── (home)/
-│ │ ├── layout.tsx
 │ │ │
 │ │ ├── about/
 │ │ └──── page.tsx
@@ -20,11 +18,18 @@ nextfolio/
 │ │ ├── project/
 │ │ └──── page.tsx
 │ │
-│ └── ui/
+│ ├── components/
+│ ├── context/
+│ ├── icons/
+│ ├── ui/
+│ ├── utils/
 │ │
+│ ├── layout.tsx
+│ ├── page.tsx
 │ └── globals.css
 │
 └── public/
+</pre>
 
 ## 🛠️ Tech Stack
 
