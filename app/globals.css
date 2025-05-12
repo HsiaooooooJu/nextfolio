@@ -19,8 +19,8 @@ html:not(.dark) {
     --color-pink: #ff8787;
     --color-coral: #fb923c;
 
-    --font-default: 'Poppins', serif;
-    --font-hand: 'Gochi Hand', serif;
+    --font-default: 'Poppins', sans-serif;
+    --font-hand: 'Gochi Hand', sans-serif;
     --font-code: 'Source Code Pro', mono;
 
     --inset-shadow-btn_default:

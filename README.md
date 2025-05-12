@@ -2,7 +2,7 @@
 
 This is a Next.js project bootstrapped with create-next-app.
 
-next_portfolio/
+nextfolio/
 │
 ├── app/
 │ ├── layout.tsx
