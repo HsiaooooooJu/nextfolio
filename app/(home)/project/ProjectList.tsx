@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useMode } from '../../context/mode_context'
 import { GithubIcon } from '../../icons'
 import Image from 'next/image'
+import debounce from '../../utils/debounce'
 
 interface PropType {
     title: string
@@ -25,7 +26,7 @@ export default function ProjectList({ list }: { list: PropType[] }) {
                     <li
                         key={index}
                         className='flex flex-col items-center gap-4 md:items-start'
-                        onMouseEnter={() => setHoverIndex(index)}
+                        onMouseEnter={debounce(() => setHoverIndex(index), 200)}
                         onMouseLeave={() => setHoverIndex(null)}
                     >
                         <a
