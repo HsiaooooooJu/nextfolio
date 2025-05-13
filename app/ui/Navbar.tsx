@@ -16,12 +16,12 @@ export default function Navbar() {
     return (
         <div className='mx-auto mb-12 flex w-full max-w-5xl items-center justify-between'>
             <Link href='/'>
-                <Egg color='canary' size='60px' />
+                <Egg size='size-15' />
             </Link>
             <Button noShadow onClick={handleClick}>
                 <Moon
                     color='canary'
-                    size='55px'
+                    size='size-14'
                     stroke='canary'
                     strokeWidth={2}
                     strokeDasharray='1,4,1,4'

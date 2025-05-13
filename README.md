@@ -42,7 +42,7 @@ nextfolio/
 1. Clone the repository:
     ```sh
     git clone https://github.com/HsiaooooooJu/nextfolio.git
-    cd your-portfolio
+    cd nextfolio
     ```
 2. ```sh
    pnpm install
