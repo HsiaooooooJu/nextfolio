@@ -6,6 +6,7 @@ import cx from 'clsx'
 import { generateAnswer, getHint, inputValidation, handleKeyDown } from '../../utils'
 import { GuessList, GuessType } from '../../components'
 import { Button, Input } from '../../ui'
+import { Arrow } from '../../icons/index'
 
 const CHANCES = 12
 
@@ -158,6 +159,12 @@ export default function Game() {
                     </Button>
                 )}
             </div>
+            <section className='mt-2'>
+                <h1 className='font-hand align-center flex gap-2 pl-2 text-2xl tracking-wider'>
+                    <Arrow size='size-5' />
+                    How to play
+                </h1>
+            </section>
         </div>
     )
 }
