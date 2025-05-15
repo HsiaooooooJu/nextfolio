@@ -177,23 +177,26 @@ export function MediumIcon() {
 
 export function Arrow({
     size = 'size-5',
-    color = 'white',
+    className = '',
 }: {
     size?: string
-    color?: string
+    className?: string
 }) {
-    const fillColor = getColor(color)
     return (
-        <div className={size}>
-            <svg className='h-full w-full' width='6' height='10' viewBox='0 0 6 10'>
-                <g fill={fillColor}>
-                    <path
-                        stroke={fillColor}
-                        strokeWidth={0.4}
-                        strokeLinecap='round'
-                        d='M.67 8.58l3.577-3.576L.67 1.43 1.518.58l4.002 4a.6.6 0 0 1 0 .849l-4.002 4L.67 8.58z'
-                    ></path>
-                </g>
+        <div className={cx(className, size)}>
+            <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='20'
+                height='20'
+                viewBox='0 0 20 20'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2.5'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                className='m-auto h-full w-full'
+            >
+                <polyline points='10 5 16 10 10 15' />
             </svg>
         </div>
     )

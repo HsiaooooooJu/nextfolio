@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { getStartDay } from '../../utils'
 import { CodeBox } from '../../components'
-import { Game } from './index'
+import { Instruction, Game } from './index'
 
 export const metadata: Metadata = {
     title: 'Project',
@@ -14,7 +14,6 @@ const updateDays = (): number => {
     return Math.floor((now - start) / msPerDay)
 }
 
-// TODO add game rules (toggle)
 export default function About() {
     const days = updateDays()
 
@@ -40,7 +39,10 @@ export default function About() {
                 />
             </div>
             <p className='hidden text-center text-4xl md:block'>∞</p>
-            <Game />
+            <div className='mx-auto flex w-11/12 max-w-lg flex-col md:w-full'>
+                <Game />
+                <Instruction />
+            </div>
         </div>
     )
 }
