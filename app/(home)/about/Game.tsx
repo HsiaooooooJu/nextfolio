@@ -9,7 +9,6 @@ import { Button, Input } from '../../ui'
 
 const CHANCES = 12
 
-// TODO add game rules (toggle)
 export default function Game() {
     const [isStart, setIsStart] = useState<boolean>(false)
     const [guessList, setGuessList] = useState<GuessType[]>([])
@@ -56,7 +55,7 @@ export default function Game() {
     }
 
     return (
-        <div className='mx-auto flex w-11/12 max-w-lg flex-col md:w-full'>
+        <>
             <div
                 className={cx(
                     'inset-shadow-t-light flex h-12 w-full items-center gap-4 rounded-t-xl px-4',
@@ -71,11 +70,11 @@ export default function Game() {
                             : 'bg-pink inset-shadow-btn_default',
                     )}
                 ></div>
-                <span className='font-hand align-bottom text-2xl text-white'>
+                <span className='font-hand align-bottom text-3xl tracking-widest text-white'>
                     2A1B
                 </span>
             </div>
-            <div className='font-hand inset-shadow-b-dark mx-auto flex w-full flex-1 flex-col rounded-b-xl bg-neutral-300 p-5 text-center tracking-wider text-black'>
+            <div className='font-hand inset-shadow-b-dark mx-auto flex min-h-84 w-full flex-col rounded-b-xl bg-neutral-300 p-5 text-center tracking-wider text-black'>
                 <div>
                     <p className='mb-2 text-xl'>Guess the secret 4-digit number.</p>
                     <p
@@ -152,12 +151,12 @@ export default function Game() {
                 ) : (
                     <Button
                         onClick={gameStart}
-                        className='bg-canary mx-auto my-4 rounded-full px-6 py-3 text-xl hover:shadow-white hover:text-shadow-white lg:my-auto'
+                        className='bg-canary mx-auto my-auto rounded-full px-6 py-3 text-xl hover:shadow-white hover:text-shadow-white'
                     >
                         Game Start
                     </Button>
                 )}
             </div>
-        </div>
+        </>
     )
 }
