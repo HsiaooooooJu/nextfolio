@@ -13,14 +13,13 @@ export default function Button({
     noShadow,
     ...props
 }: ButtonProps) {
-    const active = isActive ? 'inset-shadow-btn_active' : 'inset-shadow-btn_default'
+    const active = isActive
+        ? 'inset-shadow-btn_active'
+        : 'inset-shadow-btn_default cursor-pointer'
     const shadow = noShadow ? '' : active
 
     return (
-        <button
-            className={cx(className, shadow, !active && 'cursor-pointer')}
-            {...props}
-        >
+        <button className={cx(className, shadow)} {...props}>
             {children}
         </button>
     )

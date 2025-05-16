@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useMode } from '../../context/mode_context'
 import { GithubIcon } from '../../icons'
 import Image from 'next/image'
-import debounce from '../../utils/debounce'
+import throttle from '../../utils/throttle'
 
 interface PropType {
     title: string
@@ -26,13 +26,13 @@ export default function ProjectList({ list }: { list: PropType[] }) {
                     <li
                         key={index}
                         className='flex flex-col items-center gap-4 md:items-start'
-                        onMouseEnter={debounce(() => setHoverIndex(index), 200)}
-                        onMouseLeave={() => setHoverIndex(null)}
                     >
                         <a
                             rel='noreferrer noopener'
                             href={item.demo}
                             className='hover:text-canary max-w-sm tracking-wider hover:scale-110'
+                            onMouseEnter={throttle(() => setHoverIndex(index), 100)}
+                            onMouseLeave={() => setHoverIndex(null)}
                             target='_blank'
                         >
                             <h1 className='text-4xl'>{item.title}</h1>
@@ -56,7 +56,7 @@ export default function ProjectList({ list }: { list: PropType[] }) {
             {hoverIndex !== null && (
                 <div className='relative hidden h-72 w-120 md:block'>
                     <Image
-                        className='shadow-blue rounded-lg object-cover'
+                        className='shadow-blue rounded-lg bg-neutral-800 object-cover'
                         src={list[hoverIndex].image}
                         alt={list[hoverIndex].title}
                         fill
