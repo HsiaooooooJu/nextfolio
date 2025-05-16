@@ -46,7 +46,10 @@ export default function CodeBox({ code, language, className }: CodeBoxProps) {
                 <Button
                     onClick={copyToClipboard}
                     noShadow
-                    className='font-hand text-md absolute top-2 right-2 rounded-md bg-gray-700 px-3 py-1 text-white transition'
+                    className={cx(
+                        !copied && 'cursor-pointer',
+                        'font-hand text-md absolute top-2 right-2 rounded-md bg-gray-700 px-3 py-1 text-white transition',
+                    )}
                 >
                     {copied ? 'Copied!' : 'Copy'}
                 </Button>

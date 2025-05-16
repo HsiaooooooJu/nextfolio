@@ -18,7 +18,7 @@ export default function Navbar() {
             <Link href='/'>
                 <Egg size='size-15' />
             </Link>
-            <Button noShadow onClick={handleClick}>
+            <Button noShadow onClick={handleClick} className='cursor-pointer'>
                 <Moon
                     color='canary'
                     size='size-14'
