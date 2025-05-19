@@ -47,7 +47,7 @@ export default function RootLayout({
                 )}
             >
                 <ModeProvider>
-                    <main className='bg-primary-500 mx-auto max-w-5xl min-w-80 p-8'>
+                    <main className='bg-primary-500 xs:p-8 mx-auto max-w-5xl min-w-80 p-4'>
                         <Navbar />
                         <div className='mx-auto w-full lg:px-3'>{children}</div>
                     </main>

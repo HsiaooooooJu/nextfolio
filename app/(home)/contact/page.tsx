@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function Contact() {
     return (
-        <div className='mb-10 flex flex-col justify-between gap-6 px-4 lg:flex-row'>
+        <div className='mb-10 flex flex-col justify-between gap-6 sm:px-4 lg:flex-row'>
             <Profile />
             <SnakeGame />
         </div>

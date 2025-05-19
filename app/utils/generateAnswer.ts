@@ -1,12 +1,4 @@
-/**
- * Returns a random integer between 0 (inclusive) and the specified number (exclusive).
- *
- * @param {number} num - The upper bound (exclusive) for the random integer.
- * @returns {number} A random integer from 0 up to (but not including) num.
- */
-export function getDigit(num: number): number {
-    return Math.floor(Math.random() * num)
-}
+import getNum from './getNum'
 
 /**
  * Generates a 4-digit unique number array for the game.
@@ -20,7 +12,7 @@ export default function generateAnswer(): string[] {
     const answer = []
 
     while (answer.length < 4) {
-        const index = getDigit(number.length)
+        const index = getNum(number.length)
         answer.push(number[index])
         number.splice(index, 1)
     }
