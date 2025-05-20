@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { getStartDay } from '../../utils'
 import { CodeBox } from '../../components'
-import { Instruction, Game } from './index'
+import { Instruction, GuessNumGame } from './index'
 
 export const metadata: Metadata = {
     title: 'Project',
@@ -40,7 +40,7 @@ export default function About() {
             </div>
             <p className='hidden text-center text-4xl md:block'>∞</p>
             <div className='mx-auto flex w-11/12 max-w-lg flex-col md:w-full'>
-                <Game />
+                <GuessNumGame />
                 <Instruction />
             </div>
         </div>

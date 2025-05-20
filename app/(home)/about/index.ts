@@ -1,2 +1,2 @@
-export { default as Game } from './Game'
+export { default as GuessNumGame } from './GuessNumGame'
 export { default as Instruction } from './Instruction'

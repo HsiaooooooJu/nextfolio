@@ -9,7 +9,7 @@ import { Button, Input } from '../../ui'
 
 const CHANCES = 12
 
-export default function Game() {
+export default function GuessNumGame() {
     const [isStart, setIsStart] = useState<boolean>(false)
     const [guessList, setGuessList] = useState<GuessType[]>([])
     const [answer, setAnswer] = useState<string[]>([])

@@ -31,13 +31,13 @@ export default function Profile() {
                 />
             </div>
             <div className='font-code mx-auto text-center text-lg lg:text-justify'>
-                <p>Hi there! I’m HsiaoJu👋👋👋</p>
+                <p>Hi there! I&apos;m HsiaoJu👋👋👋</p>
                 <p>
                     A frontend engineer who loves crafting sleek, responsive web apps
-                    with React and Tailwind CSS🌈 I’m all about clean code, smooth
-                    user experiences, and building things that last. When I’m not
-                    coding, I’m probably hunting down the next great cup of coffee ☕
-                    or tweaking pixels just for fun🧩(￣∇￣)
+                    with React and Tailwind CSS 🌈 I&apos;m all about clean code,
+                    smooth user experiences, and building things that last. When
+                    I&apos;m not coding, I&apos;m probably hunting down the next
+                    great cup of coffee ☕ or tweaking pixels just for fun 🧩(￣∇￣)
                 </p>
             </div>
         </section>
