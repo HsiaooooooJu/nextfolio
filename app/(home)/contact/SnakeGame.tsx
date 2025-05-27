@@ -133,6 +133,9 @@ export default function Practice() {
                         </Button>
                     )}
                 </div>
+                <p className='font-code text-canary mt-3'>
+                    Snake game is not available on mobile phone yet. :P
+                </p>
             </div>
         </>
     )

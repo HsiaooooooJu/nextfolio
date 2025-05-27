@@ -1,6 +1,6 @@
 export default function throttle<T extends unknown[]>(
     fn: (...args: T) => void,
-    delay: number,
+    delay: number = 500,
 ) {
     let timer: ReturnType<typeof setTimeout> | null = null
     return (...args: T) => {
