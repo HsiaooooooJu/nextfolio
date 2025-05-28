@@ -19,7 +19,7 @@ export default function About() {
     const days = updateDays()
 
     return (
-        <div className='mb-8 flex flex-col-reverse justify-between gap-6 lg:flex-row'>
+        <div className='slide_left mb-8 flex flex-col-reverse justify-between gap-6 lg:flex-row'>
             <div className='relative mx-auto w-11/12 max-w-lg overflow-hidden rounded-xl text-xl md:w-full'>
                 <CodeBox
                     language='javascript'

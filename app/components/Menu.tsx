@@ -2,7 +2,7 @@ import MenuItem from './MenuItem'
 
 export default function Menu() {
     return (
-        <nav className='flex justify-center gap-6 pb-10 lg:justify-start lg:pb-14'>
+        <nav className='flex justify-center gap-6 pb-15 lg:justify-start lg:pb-14'>
             <MenuItem
                 href='/about'
                 text='About'
