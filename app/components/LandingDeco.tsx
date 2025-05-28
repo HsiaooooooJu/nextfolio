@@ -39,14 +39,16 @@ export default function LandingDeco() {
 
         const handleMouseMove = (e: MouseEvent) =>
             throttledUpdateHue.current?.(e.clientX)
-        const handleTouchMove = (e: TouchEvent) =>
+        const handleTouchMove = (e: TouchEvent) => {
+            e.preventDefault()
             throttledUpdateHue.current?.(e.touches[0].clientX)
+        }
         const stopDragging = () => setDragging(false)
 
         window.addEventListener('mousemove', handleMouseMove)
         window.addEventListener('mouseup', stopDragging)
 
-        window.addEventListener('touchmove', handleTouchMove)
+        window.addEventListener('touchmove', handleTouchMove, { passive: false })
         window.addEventListener('touchend', stopDragging)
 
         return () => {
