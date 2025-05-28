@@ -40,7 +40,7 @@ const colorMap = [
 
 export default function Project() {
     return (
-        <div className='relative flex justify-center md:justify-between'>
+        <div className='slide_left relative flex justify-center md:justify-between'>
             <ProjectList list={projects} />
             <div className='group absolute right-4 bottom-0 hidden gap-4 md:flex'>
                 {colorMap.map(([baseColor, hoverColor], index) => (
