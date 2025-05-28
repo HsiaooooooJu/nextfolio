@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import { getStartDay } from '../../utils'
 import { CodeBox } from '../../components'
-import { Instruction, GuessNumGame } from './index'
+import GuessNumGame from './GuessNumGame'
+import { Accordion } from '../../ui'
 
 export const metadata: Metadata = {
     title: 'Project',
@@ -41,7 +42,28 @@ export default function About() {
             <p className='hidden text-center text-4xl md:block'>∞</p>
             <div className='mx-auto flex w-11/12 max-w-lg flex-col md:w-full'>
                 <GuessNumGame />
-                <Instruction />
+                <Accordion title='How to play'>
+                    <div className='space-y-2 px-8 font-medium'>
+                        <p>
+                            For each guess, you will get feedback in the format&ensp;
+                            <b className='text-pink'>_</b>A
+                            <b className='text-pink'>_</b>
+                            B, where:
+                        </p>
+                        <div className='space-y-1'>
+                            <p className='flex'>
+                                <span className='text-coral mr-1'>A:</span>
+                                numbers that&apos;re correct and in the correct
+                                position.
+                            </p>
+                            <p className='flex'>
+                                <span className='text-coral mr-1'>B:</span>
+                                numbers that&apos;re correct but in the wrong
+                                position.
+                            </p>
+                        </div>
+                    </div>
+                </Accordion>
             </div>
         </div>
     )
