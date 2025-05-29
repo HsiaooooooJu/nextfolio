@@ -3,7 +3,7 @@ import './globals.css'
 import cx from 'clsx'
 import ModeProvider from './context/mode_context'
 import { gochiHand, poppins, sourceCode } from './ui/fonts'
-import { Navbar } from './ui'
+import { Navbar, Footer } from './ui'
 
 export const metadata: Metadata = {
     title: {
@@ -51,6 +51,7 @@ export default function RootLayout({
                         <Navbar />
                         <div className='mx-auto w-full lg:px-3'>{children}</div>
                     </main>
+                    <Footer />
                 </ModeProvider>
             </body>
         </html>

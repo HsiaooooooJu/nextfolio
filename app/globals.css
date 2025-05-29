@@ -90,3 +90,17 @@ input[type='number'] {
         translate: 0 100px;
     }
 }
+
+@keyframes wave {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+.animate-wave {
+    display: flex;
+    width: 200%;
+    animation: wave 12s linear infinite;
+}
