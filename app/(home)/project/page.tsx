@@ -16,7 +16,7 @@ const projects = [
     },
     {
         title: 'Hangman',
-        tech: 'React/TS/CSS Modules',
+        tech: 'React/TS',
         demo: 'https://hsiaooooooju.github.io/react-hangman/',
         github: 'https://github.com/HsiaooooooJu/react-hangman',
         image: '/images/hangman_preview.jpg',
@@ -31,16 +31,16 @@ const projects = [
 ]
 
 const colorMap = [
-    ['bg-blue/20', 'group-hover:bg-pink/20'],
-    ['bg-blue/40', 'group-hover:bg-pink/40'],
-    ['bg-blue/60', 'group-hover:bg-pink/60'],
-    ['bg-blue/80', 'group-hover:bg-pink/80'],
-    ['bg-blue', 'group-hover:bg-pink'],
+    ['bg-canary/20', 'group-hover:bg-pink/20'],
+    ['bg-canary/40', 'group-hover:bg-pink/40'],
+    ['bg-canary/60', 'group-hover:bg-pink/60'],
+    ['bg-canary/80', 'group-hover:bg-pink/80'],
+    ['bg-canary', 'group-hover:bg-pink'],
 ]
 
 export default function Project() {
     return (
-        <div className='slide_left relative flex justify-center md:justify-between'>
+        <div className='slide_left relative mb-10 flex justify-center md:justify-between'>
             <ProjectList list={projects} />
             <div className='group absolute right-4 bottom-0 hidden gap-4 md:flex'>
                 {colorMap.map(([baseColor, hoverColor], index) => (

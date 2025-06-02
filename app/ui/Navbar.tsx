@@ -14,7 +14,7 @@ export default function Navbar() {
     }
 
     return (
-        <div className='mx-auto mb-12 flex w-full max-w-5xl items-center justify-between'>
+        <div className='mx-auto mb-12 flex max-w-5xl items-center justify-between'>
             <Link href='/'>
                 <Egg size='size-15' />
             </Link>

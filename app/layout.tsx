@@ -3,7 +3,7 @@ import './globals.css'
 import cx from 'clsx'
 import ModeProvider from './context/mode_context'
 import { gochiHand, poppins, sourceCode } from './ui/fonts'
-import { Navbar } from './ui'
+import { Navbar, Footer } from './ui'
 
 export const metadata: Metadata = {
     title: {
@@ -44,13 +44,15 @@ export default function RootLayout({
                     poppins.variable,
                     sourceCode.variable,
                     'antialiased',
+                    'flex min-h-screen flex-col items-center',
                 )}
             >
                 <ModeProvider>
-                    <main className='bg-primary-500 xs:p-8 mx-auto max-w-5xl min-w-80 p-4'>
+                    <main className='xs:p-8 w-full max-w-5xl min-w-80 flex-1 overflow-hidden p-4'>
                         <Navbar />
-                        <div className='mx-auto w-full lg:px-3'>{children}</div>
+                        <div className='mx-auto lg:px-3'>{children}</div>
                     </main>
+                    <Footer />
                 </ModeProvider>
             </body>
         </html>
