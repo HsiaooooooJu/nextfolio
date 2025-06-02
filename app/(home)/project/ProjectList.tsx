@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useMode } from '../../context/mode_context'
 import { GithubIcon } from '../../icons'
 import Image from 'next/image'
-import throttle from '../../utils/throttle'
+import { useDebounce } from '../../hooks'
 
 interface PropType {
     title: string
@@ -18,6 +18,7 @@ export default function ProjectList({ list }: { list: PropType[] }) {
     const [hoverIndex, setHoverIndex] = useState<number | null>(null)
     const { mode } = useMode()
     const isDark = mode === 'dark'
+    const debounceHover = useDebounce((index: number) => setHoverIndex(index), 150)
 
     return (
         <>
@@ -31,7 +32,7 @@ export default function ProjectList({ list }: { list: PropType[] }) {
                             rel='noreferrer noopener'
                             href={item.demo}
                             className='hover:text-canary max-w-sm tracking-wider hover:scale-110'
-                            onMouseEnter={throttle(() => setHoverIndex(index), 100)}
+                            onMouseEnter={() => debounceHover(index)}
                             onMouseLeave={() => setHoverIndex(null)}
                             target='_blank'
                         >
@@ -54,7 +55,7 @@ export default function ProjectList({ list }: { list: PropType[] }) {
                 ))}
             </ul>
             {hoverIndex !== null && (
-                <div className='relative hidden h-72 w-120 md:block'>
+                <div className='slide_left relative hidden h-72 w-120 md:block'>
                     <Image
                         className='shadow-blue rounded-lg bg-neutral-800 object-cover'
                         src={list[hoverIndex].image}

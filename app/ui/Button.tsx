@@ -14,7 +14,7 @@ export default function Button({
     ...props
 }: ButtonProps) {
     const active = isActive
-        ? 'inset-shadow-btn_active'
+        ? 'inset-shadow-btn_active cursor-grabbing'
         : 'inset-shadow-btn_default cursor-pointer'
     const shadow = noShadow ? '' : active
 
