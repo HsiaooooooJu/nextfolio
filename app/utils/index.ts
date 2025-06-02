@@ -1,8 +1,6 @@
-export { default as debounce } from './debounce'
 export { default as generateAnswer } from './generateAnswer'
 export { default as getHint } from './getHint'
 export { default as getNum } from './getNum'
 export { default as getStartDay } from './getStartDay'
 export { default as handleKeyDown } from './handleKeyDown'
 export { default as inputValidation } from './inputValidation'
-export { default as throttle } from './throttle'

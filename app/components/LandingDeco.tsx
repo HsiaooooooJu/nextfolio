@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useThrottle } from '../hooks'
 import { Button } from '../ui'
-import { throttle } from '../utils'
 
 import cx from 'clsx'
 
@@ -19,29 +19,23 @@ export default function LandingDeco() {
     const [hue, setHue] = useState(360)
     const [dragging, setDragging] = useState(false)
     const barRef = useRef<HTMLDivElement>(null)
-    const throttledUpdateHue = useRef<(x: number) => void>(null)
     const left = `${(hue / 360) * maxBarRatio}%`
     const filter = `hue-rotate(${hue}deg)`
+
+    const throttledUpdateHue = useThrottle((x: number) => {
+        if (!barRef.current) return
+        const { left, width } = barRef.current.getBoundingClientRect()
+        const moveSlider = Math.round(((x - left) / width) * 360)
+        setHue(Math.min(Math.max(moveSlider, 0), 360))
+    }, 16)
 
     useEffect(() => {
         if (!dragging) return
 
-        const updateHue = (x: number) => {
-            if (!barRef.current) return
-            const { left, width } = barRef.current.getBoundingClientRect()
-            const moveDeg = Math.round(((x - left) / width) * 360)
-            setHue(Math.min(Math.max(moveDeg, 0), 360))
-        }
-
-        if (!throttledUpdateHue.current) {
-            throttledUpdateHue.current = throttle(updateHue, 16)
-        }
-
-        const handleMouseMove = (e: MouseEvent) =>
-            throttledUpdateHue.current?.(e.clientX)
+        const handleMouseMove = (e: MouseEvent) => throttledUpdateHue(e.clientX)
         const handleTouchMove = (e: TouchEvent) => {
             e.preventDefault()
-            throttledUpdateHue.current?.(e.touches[0].clientX)
+            throttledUpdateHue(e.touches[0].clientX)
         }
         const stopDragging = () => setDragging(false)
 
@@ -58,7 +52,7 @@ export default function LandingDeco() {
             window.removeEventListener('touchmove', handleTouchMove)
             window.removeEventListener('touchend', stopDragging)
         }
-    }, [dragging])
+    }, [dragging, throttledUpdateHue])
 
     return (
         <div className='m-auto flex w-full max-w-sm flex-col gap-6 md:m-0'>
