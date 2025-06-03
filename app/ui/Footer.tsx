@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className='relative hidden h-12 w-full overflow-hidden md:block'>
+        <footer className='hidden h-12 w-full overflow-hidden md:block'>
             <Wave />
         </footer>
     )

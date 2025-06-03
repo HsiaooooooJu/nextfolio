@@ -1,21 +1,17 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { useThrottle } from '../hooks'
-import { Button } from '../ui'
+import { Button, Lightbox } from '../ui'
+import QuarterRound from './QuarterRound'
 
 import cx from 'clsx'
-
-const colorMap = [
-    ['bg-blue/25', 'group-hover:bg-pink/25'],
-    ['bg-blue/50', 'group-hover:bg-pink/50'],
-    ['bg-blue/75', 'group-hover:bg-pink/75'],
-    ['bg-blue', 'group-hover:bg-pink'],
-]
 
 const maxBarRatio = 87.5
 
 export default function LandingDeco() {
+    const [openLightboxId, setOpenLightboxId] = useState<'uno' | 'devProd' | null>()
     const [hue, setHue] = useState(360)
     const [dragging, setDragging] = useState(false)
     const barRef = useRef<HTMLDivElement>(null)
@@ -60,42 +56,17 @@ export default function LandingDeco() {
                 <p className='font-default z-1 text-5xl font-bold tracking-wider dark:text-white'>
                     IF &ensp;NOT
                 </p>
-                <div className='flex-between group absolute right-0 gap-4'>
-                    {colorMap.map((color, index) => {
-                        const isFourth = index === 3
-                        return (
-                            <div
-                                key={index}
-                                style={{ filter }}
-                                className={cx(
-                                    'size-14 rounded-tr-full sm:block',
-                                    color,
-                                    isFourth ? 'inset-shadow-btn_active' : 'hidden',
-                                )}
-                            >
-                                {isFourth && (
-                                    <p
-                                        className={cx(
-                                            'translate-x-1/6 translate-y-2/3 transform',
-                                            'font-code text-xl font-bold text-black',
-                                        )}
-                                    >
-                                        if
-                                    </p>
-                                )}
-                            </div>
-                        )
-                    })}
-                </div>
+                <QuarterRound filter={filter} />
             </div>
 
             <div className='flex-between gap-6 font-bold'>
-                <div
+                <Button
                     style={{ filter }}
-                    className='bg-coral font-code inset-shadow-btn_active hover:inset-shadow-btn_default flex-center h-12 w-2/3 rounded-lg text-lg text-black'
+                    className='bg-coral font-code flex-center h-12 w-2/3 rounded-lg text-lg text-black text-shadow-white'
+                    isActive
                 >
-                    <p className='font-code'>{'(!calm) {'}</p>
-                </div>
+                    {'(!calm) {'}
+                </Button>
                 <p className='font-default text-5xl tracking-wider dark:text-white'>
                     CALM
                 </p>
@@ -109,22 +80,24 @@ export default function LandingDeco() {
             </div>
 
             <div className='relative flex items-center font-bold'>
-                <p
+                <Button
                     style={{ filter }}
-                    className='bg-canary hover:shadow-canary font-code inset-shadow-btn_default flex-center h-10 w-10 rounded-full text-lg text-black sm:w-1/3'
+                    onClick={() => setOpenLightboxId('uno')}
+                    className='bg-canary hover:shadow-canary font-code flex-center h-10 w-10 rounded-full text-lg text-black sm:w-1/3'
                 >
                     {'}'}
-                </p>
+                </Button>
                 <p className='font-default text-5xl tracking-wider dark:text-white'>
                     {' '}
                     &ensp; ; ELSE
                 </p>
-                <p
+                <Button
                     style={{ filter }}
+                    onClick={() => setOpenLightboxId('devProd')}
                     className='bg-pink hover:shadow-pink font-code inset-shadow-btn_default vertical-rl flex-center absolute top-1 right-1 h-24 w-12 rounded-full text-black'
                 >
                     {'else {'}
-                </p>
+                </Button>
             </div>
             <div className='flex-between'>
                 <p className='font-hand text-5xl sm:tracking-widest dark:text-white'>
@@ -146,6 +119,44 @@ export default function LandingDeco() {
                     className='border-blue h-1.5 border-y-1'
                 ></div>
             </div>
+            <Lightbox
+                isOpen={openLightboxId === 'uno'}
+                className='flex-center flex-col gap-5 bg-black'
+            >
+                <Image
+                    src='/images/meme_uno.jpg'
+                    width={360}
+                    height={240}
+                    alt='meme uno'
+                    className='rounded-lg'
+                />
+                <Button
+                    onClick={() => setOpenLightboxId(null)}
+                    style={{ filter }}
+                    className='bg-canary font-hand hover:shadow-canary rounded-full px-6 py-2 tracking-wider text-black'
+                >
+                    Close
+                </Button>
+            </Lightbox>
+            <Lightbox
+                isOpen={openLightboxId === 'devProd'}
+                className='flex-center flex-col gap-5'
+            >
+                <Image
+                    src='/images/meme_devProd.jpg'
+                    width={360}
+                    height={240}
+                    alt='meme production crash'
+                    className='rounded-lg bg-white py-2'
+                />
+                <Button
+                    onClick={() => setOpenLightboxId(null)}
+                    style={{ filter }}
+                    className='bg-pink font-hand hover:shadow-pink rounded-full px-6 py-2 tracking-wider text-black'
+                >
+                    Close
+                </Button>
+            </Lightbox>
         </div>
     )
 }

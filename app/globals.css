@@ -91,6 +91,26 @@ input[type='number'] {
     }
 }
 
+.scale_up {
+    opacity: 1;
+    transition: all 0.6s ease;
+
+    @starting-style {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
+
+.scale_down {
+    opacity: 0;
+    transform: scale(0.3);
+    transition: all 0.5s ease-in-out;
+
+    @starting-style {
+        opacity: 1;
+    }
+}
+
 @keyframes wave {
     0% {
         transform: translateX(0);
