@@ -44,15 +44,16 @@ export default function RootLayout({
                     poppins.variable,
                     sourceCode.variable,
                     'antialiased',
-                    'flex min-h-screen flex-col items-center',
                 )}
             >
                 <ModeProvider>
-                    <main className='xs:p-8 w-full max-w-5xl min-w-80 flex-1 overflow-hidden p-4'>
-                        <Navbar />
-                        <div className='mx-auto lg:px-3'>{children}</div>
-                    </main>
-                    <Footer />
+                    <div className='flex min-h-screen flex-col items-center'>
+                        <main className='xs:p-8 w-full max-w-5xl min-w-80 flex-1 overflow-hidden p-4'>
+                            <Navbar />
+                            <div className='mx-auto lg:px-3'>{children}</div>
+                        </main>
+                        <Footer />
+                    </div>
                 </ModeProvider>
             </body>
         </html>

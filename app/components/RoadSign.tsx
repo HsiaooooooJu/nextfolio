@@ -4,7 +4,7 @@ import cx from 'clsx'
 export default function RoadSign() {
     const stickShadow = 'bg-white inset-shadow-btn_default'
     const signStyle =
-        'rounded-full leading-12 text-center h-12 text-2xl font-hand text-black inset-shadow-btn_default hover:scale-110'
+        'rounded-full leading-12 text-center h-12 text-2xl font-hand text-black inset-shadow-btn_default text-shadow-white hover:scale-110'
 
     return (
         <div className='relative m-auto flex w-72 flex-col items-center'>
