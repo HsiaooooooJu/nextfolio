@@ -16,6 +16,7 @@ export default function useThrottle<T extends unknown[]>(
             if (timer.current) return
             timer.current = setTimeout(() => {
                 savedFn.current(...args)
+                timer.current = null
             }, delay)
         },
         [delay],
