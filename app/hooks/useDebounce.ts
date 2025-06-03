@@ -18,6 +18,7 @@ export default function useDebounce<T extends unknown[]>(
             }
             timer.current = setTimeout(() => {
                 savedFn.current(...args)
+                timer.current = null
             }, delay)
         },
         [delay],
