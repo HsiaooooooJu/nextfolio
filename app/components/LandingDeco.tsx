@@ -1,17 +1,17 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
 import { useThrottle } from '../hooks'
-import { Button, Lightbox } from '../ui'
+import { Button } from '../ui'
 import QuarterRound from './QuarterRound'
-
-import cx from 'clsx'
+import MemeBox from './MemeBox'
 
 const maxBarRatio = 87.5
 
 export default function LandingDeco() {
-    const [openLightboxId, setOpenLightboxId] = useState<'uno' | 'devProd' | null>()
+    const [openBoxId, setOpenBoxId] = useState<'uno' | 'devProd' | 'calm' | null>(
+        null,
+    )
     const [hue, setHue] = useState(360)
     const [dragging, setDragging] = useState(false)
     const barRef = useRef<HTMLDivElement>(null)
@@ -62,8 +62,8 @@ export default function LandingDeco() {
             <div className='flex-between gap-6 font-bold'>
                 <Button
                     style={{ filter }}
-                    className='bg-coral font-code flex-center h-12 w-2/3 rounded-lg text-lg text-black text-shadow-white'
-                    isActive
+                    onClick={() => setOpenBoxId('calm')}
+                    className='bg-coral font-code hover:shadow-coral flex-center h-12 w-2/3 rounded-lg text-lg text-black text-shadow-white'
                 >
                     {'(!calm) {'}
                 </Button>
@@ -82,7 +82,7 @@ export default function LandingDeco() {
             <div className='relative flex items-center font-bold'>
                 <Button
                     style={{ filter }}
-                    onClick={() => setOpenLightboxId('uno')}
+                    onClick={() => setOpenBoxId('uno')}
                     className='bg-canary hover:shadow-canary font-code flex-center h-10 w-10 rounded-full text-lg text-black sm:w-1/3'
                 >
                     {'}'}
@@ -93,7 +93,7 @@ export default function LandingDeco() {
                 </p>
                 <Button
                     style={{ filter }}
-                    onClick={() => setOpenLightboxId('devProd')}
+                    onClick={() => setOpenBoxId('devProd')}
                     className='bg-pink hover:shadow-pink font-code inset-shadow-btn_default vertical-rl flex-center absolute top-1 right-1 h-24 w-12 rounded-full text-black'
                 >
                     {'else {'}
@@ -119,44 +119,11 @@ export default function LandingDeco() {
                     className='border-blue h-1.5 border-y-1'
                 ></div>
             </div>
-            <Lightbox
-                isOpen={openLightboxId === 'uno'}
-                className='flex-center flex-col gap-5 bg-black'
-            >
-                <Image
-                    src='/images/meme_uno.jpg'
-                    width={360}
-                    height={240}
-                    alt='meme uno'
-                    className='rounded-lg'
-                />
-                <Button
-                    onClick={() => setOpenLightboxId(null)}
-                    style={{ filter }}
-                    className='bg-canary font-hand hover:shadow-canary rounded-full px-6 py-2 tracking-wider text-black'
-                >
-                    Close
-                </Button>
-            </Lightbox>
-            <Lightbox
-                isOpen={openLightboxId === 'devProd'}
-                className='flex-center flex-col gap-5'
-            >
-                <Image
-                    src='/images/meme_devProd.jpg'
-                    width={360}
-                    height={240}
-                    alt='meme production crash'
-                    className='rounded-lg bg-white py-2'
-                />
-                <Button
-                    onClick={() => setOpenLightboxId(null)}
-                    style={{ filter }}
-                    className='bg-pink font-hand hover:shadow-pink rounded-full px-6 py-2 tracking-wider text-black'
-                >
-                    Close
-                </Button>
-            </Lightbox>
+            <MemeBox
+                filter={filter}
+                openBoxId={openBoxId}
+                setOpenBoxId={setOpenBoxId}
+            />
         </div>
     )
 }
