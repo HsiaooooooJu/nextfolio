@@ -32,13 +32,14 @@ export default function Lightbox({
             <>
                 <div
                     className={cx(
-                        'fixed top-0 left-0 z-10 h-svh w-full bg-black/80 transition-opacity duration-500',
+                        'fixed inset-0 z-10',
+                        'bg-black/80 transition-opacity duration-500',
                         isOpen ? 'opacity-100' : 'opacity-0',
                     )}
                 ></div>
                 <div
                     className={cx(
-                        'center z-10 mx-auto rounded-lg',
+                        'fixed inset-0 z-10 mx-auto rounded-lg',
                         width ?? 'w-80',
                         className,
                         isOpen ? 'scale_up' : 'scale_down',
